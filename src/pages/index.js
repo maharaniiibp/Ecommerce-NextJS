@@ -18,7 +18,7 @@ export default function Home() {
         </h1>
         <div className="my-10 mb-10 space-y-5 text-2xl lg:mb-28 w-80 md:w-[700px]">
           <div className="flex flex-col">
-            <span className="font-light">Korean Food</span>
+            <span className="font-light">Korean Food 한국 음식</span>
             </div>
           <div className='text-justify'>
           Hidangan Korea adalah makanan tradisional yang dibuat berdasarkan pada teknik dan cara memasak orang Korea. Masakan Korea memiliki keunikan tersendiri, mulai dari kuliner istana sampai makanan khas daerah serta perpaduan masakan modern. Bahan-bahan yang digunakan serta cara penyiapannya juga sangat berbeda. Banyak sekali makanan Korea yang sudah mendunia.

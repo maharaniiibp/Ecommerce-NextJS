@@ -34,8 +34,8 @@ export default function Header() {
         </div>
 
         <div className="container mx-auto flex p-5 w-full text-white ">
-          <div className="logo justify-start font-TitanOne text-xl">
-            <Link href="/">
+          <div className="w-60 logo justify-start font-TitanOne text-xl">
+            <Link className='flex' href="/">
               <a>KOFU</a>
             </Link>
           </div>
