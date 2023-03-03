@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import { data } from '../data'
+import { data } from '../../data/data'
 
 function App() {
   const [search, setSearch] = useState('')

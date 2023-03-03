@@ -1,4 +1,4 @@
-import { data } from "../data";
+import { data } from "../../data/data";
 import React, { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/router";
 import { Minus } from "@/components/Minus";
