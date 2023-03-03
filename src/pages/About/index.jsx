@@ -4,10 +4,10 @@ import Image from 'next/image'
 
 export default function AboutMe() {
   const data = [
-    { gambar: '/photo/1.jpg', nama: 'Edit Video' },
-    { gambar: '/photo/2.jpg', nama: 'Web-Fourniture' },
-    { gambar: '/photo/3.jpg', nama: 'Web-Kelompok' },
-    { gambar: '/photo/4.jpg', nama: 'UI&UX Desain' },
+    { gambar: '/photo/1.jpg', nama: 'Best Restaurant in Indonesia' },
+    { gambar: '/photo/2.jpg', nama: 'Best Kinerja 2023' },
+    { gambar: '/photo/3.jpg', nama: 'Restaurant terbersih di dunia' },
+    { gambar: '/photo/4.jpg', nama: 'Sertifikasi halal' },
   ]
 
   return (
@@ -24,12 +24,27 @@ export default function AboutMe() {
           <h1 className="text-5xl ">
             <span className="font-bold">About KOFU</span>
           </h1>
-          <p>Hallo!!👋 my name is Maharani, you can call me Rani or Rain</p>
+          <p>Hallo!!👋</p>
+          <p className="text-justify">
+            Kofu adalah Restaurant pertama kali di Indonesia yang memiliki menu
+            beragam khas korea yang pas dengan lidah orang Indonesia. Kofu
+            didirikan pada tahun 2018. Menyediakan beragam menu viral spicy and
+            non-spicy. Memperoleh beragam sertifikat sebagai Best-Restaurant in
+            Indonesia dengan kelezatan masakan yang dijual, Penjualan yang
+            paling luar biasa di tahun 2023 karena sangat ramai pengunjung,
+            restaurant terbersih di dunia dengan tempat yang comfortable, dan
+            sudah mendapatkan sertifikasi halal sehingga muslim juga dapat
+            menikmati masakan dari korea
+          </p>
+          <br />
+          Alamat : Jl. Amazon Kota Jakarta Timur
         </div>
-        <div className="w-full md:w-2/3 mt-10 lg:mt-0 mb-5 md:mb-0 md:h-[700px] md:mx-auto  ">
+        <div className="w-full md:w-2/3 mt-10 lg:mt-0 mb-5 md:mb-0 md:h-[400px] md:mx-auto  ">
           {/* video youtube */}
           <iframe
-            className="w-800 h-600 mx-auto "
+            className="w-full h-full aspect-video"
+            width={'auto'}
+            height={'auto'}
             src="https://www.youtube.com/embed/fFaEIQacPCo"
             title="YouTube video player"
             frameborder="0"
@@ -39,13 +54,13 @@ export default function AboutMe() {
         </div>
       </div>
 
-      <span className="text-center font-bold text-5xl mb-80 ">
+      <span className="text-center font-bold text-5xl mb-12 mt-[18px] ">
         Our Certificate
       </span>
-      <div className="mb-80 flex gap-8 py-9 lg:flex-row flex-wrap justify-center mx-auto">
+      <div className="mb-24 flex gap-8 py-9 lg:flex-row flex-wrap justify-center mx-auto">
         <ul className="grid grid-cols-2 md:grid-cols-4">
           {data.map((data) => (
-            <li className="bg-white rounded-md overflow-hidden m-auto mx-8 mb-4 w-36 md:w-60 hover:shadow-2xl text-left p-4">
+            <li className="bg-orange-900 rounded-md overflow-hidden mx-8 mb-4 w-36 md:w-60 hover:shadow-2xl text-left p-4">
               <Image
                 width={300}
                 height={350}
@@ -53,7 +68,7 @@ export default function AboutMe() {
                 alt=""
                 className="w-72 md:w-80 h-24 md:h-44 items-center object-contain rounded-md mx-auto mb-2"
               />
-              <p className="text-base">
+              <p className="text-base mb-2 text-white text-center">
                 <strong>{data.nama}</strong>
               </p>
               <p className="text-sm mb-2">{data.tanggal}</p>

@@ -13,7 +13,7 @@ export default function Home() {
         />
       </Head>
       <div className="grid place-content-center text-center lg:text-left">
-        <h1 title="Mathilde Langevin" className="text-[80px] leading-[70px]">
+        <h1 title="Mathilde Langevin" className="text-[80px] leading-[70px] font-">
           KOFU
         </h1>
         <div className="my-10 mb-10 space-y-5 text-2xl lg:mb-28 w-80 md:w-[700px]">

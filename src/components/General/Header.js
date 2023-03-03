@@ -4,6 +4,7 @@ import { menu } from '@/data/menu'
 import img from '../../../public/photo/logo.png'
 import Image from 'next/image'
 
+
 export default function Header() {
   const [isShowMenuMobile, setIsShowMenuMobile] = useState(false)
   const menuRef = useRef(null)
@@ -33,7 +34,7 @@ export default function Header() {
         </div>
 
         <div className="container mx-auto flex p-5 w-full text-white ">
-          <div className="logo justify-start ">
+          <div className="logo justify-start font-TitanOne text-xl">
             <Link href="/">
               <a>KOFU</a>
             </Link>

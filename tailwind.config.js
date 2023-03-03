@@ -11,9 +11,12 @@ module.exports = {
         ham: "400px",
       },
       fontFamily: {
-        Poppins: "Poppins",
-        PermanentMarker: "Permanent Marker",
-      }
+        Poppins: ["Poppins"],
+        TitanOne: ["Titan One", "cursive"],
+      },
+      aspectRatio: {
+        '3/2': '3/2',
+      },
     },
   },
   plugins: [],

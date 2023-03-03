@@ -120,7 +120,7 @@ function App() {
                     <img
                       src={image.image}
                       alt=""
-                      className="w-full h-80 md:h-48 object-contain p-2 my-5"
+                      className="w-full aspect-[3/2] h-80 md:h-48 object-contain p-2 my-5"
                     />
                     <div className="px-6 py-8">
                       <div className="font-extrabold text-orange-900 text-lg text-justify mb-3">
