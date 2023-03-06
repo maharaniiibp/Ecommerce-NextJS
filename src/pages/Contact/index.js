@@ -2,10 +2,11 @@ import React from 'react'
 // import Link from 'next/link'
 import Head from 'next/head'
 
+
 const Contact = () => (
   <section id="contact" className="relative">
     <Head>
-      <title>Contact - Maharani B'anica Putri</title>
+      <title>Contact us - Admin Kofu</title>
       <meta name="description" content="Contact Mathilde Langevin" />
     </Head>
 
@@ -23,8 +24,8 @@ const Contact = () => (
           {/* <span className="font-bold">Me</span> */}
         </h1>
         <p className="">
-          my email only for you
-          <br /> you can contact me at my social media instagram or phone
+          Social Media only for you
+          <br /> you can contact at my social media instagram or phone
         </p>
       </div>
       

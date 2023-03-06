@@ -110,7 +110,7 @@ function App() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {product
             ? product.map((image) => (
-                <Link href={`/${image.id}`} key={image.id}>
+                <div>
                   <div
                     key={image.id}
                     image={image}
@@ -133,10 +133,15 @@ function App() {
                             <strong>{image.price}</strong>
                           </li>
                         </ul>
+                        <div className="bg-orange-900 p-2 w-16 h-10 text-center rounded text-white">
+                          <Link href={`/${image.id}`} key={image.id}>
+                            Detail
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </Link>
+                </div>
               ))
             : data.map((image) => (
                 <Link href={`/${image.id}`} key={image.id}>

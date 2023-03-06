@@ -1,45 +1,46 @@
-import { data } from "../../data/data";
-import React, { useEffect, useState, useRef } from "react";
-import { useRouter } from "next/router";
-import { Minus } from "@/components/Minus";
-import { Plus } from "@/components/Plus";
+import { data } from '../../data/data'
+import React, { useEffect, useState, useRef } from 'react'
+import { useRouter } from 'next/router'
+import { Minus } from '@/components/Minus'
+import { Plus } from '@/components/Plus'
+import Link from 'next/link'
 
 function getFood(id) {
-  const item = data.find((e) => e.id === Number(id));
-  if (typeof item === "object") {
-    return item;
+  const item = data.find((e) => e.id === Number(id))
+  if (typeof item === 'object') {
+    return item
   }
-  return {};
+  return {}
 }
 
 function Detail() {
-  const router = useRouter();
-  const { slug } = router.query;
+  const router = useRouter()
+  const { slug } = router.query
 
-  const food = getFood(slug);
+  const food = getFood(slug)
 
   if (Object.keys(food).length === 0) {
-    return <div>Item not found</div>;
+    return <div>Item not found</div>
   }
-  const [qty, setQty] = useState(1);
-  const [adding, setAdding] = useState(false);
+  const [qty, setQty] = useState(1)
+  const [adding, setAdding] = useState(false)
 
   const total = qty * food.price
 
   const handleOnAddToCart = () => {
-    setAdding(true);
+    setAdding(true)
     toastId.current = toast.loading(
       `Adding ${qty} item${qty > 1 ? 's' : ''}...`
-    );
-    addItem(props, qty);
-  };
+    )
+    addItem(props, qty)
+  }
 
   return (
     <>
       <div className="container lg:max-w-screen-lg mx-auto py-24 px-6">
         <div className="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 md:space-x-12">
           {/* Product's image */}
-          <div className="relative w-72 h-72 md:w-96 md:h-96 mb-40 my-auto">
+          <div className="relative w-72 h-72 md:w-96 md:h-96 mb-12 ">
             <img
               src={food.image}
               alt={food.name}
@@ -49,11 +50,11 @@ function Detail() {
           </div>
 
           {/* Product's details */}
-          <div className="flex-1 max-w-md border border-opacity-50 rounded-md shadow-lg p-6 mt-80">
+          <div className="flex-1 max-w-md border border-opacity-50 rounded-md shadow-lg p-6 mt-80 md:mt-24">
             <h2 className="text-3xl font-semibold">{food.name}</h2>
             <p>
-              <span className="text-gray-500">Availability:</span>{" "}
-              <span className="font-semibold">In stock</span>
+              <span className="text-gray-500">Availability:</span>{' '}
+              <span className="font-semibold">{food.stock}</span>
             </p>
             <p className="mt-4">{food.description}</p>
 
@@ -66,34 +67,39 @@ function Detail() {
               <p className="text-gray-500">Quantity:</p>
               <div className="mt-1 flex items-center space-x-3">
                 <button
-                  onClick={() => setQty(prev => prev - 1)}
+                  onClick={() => setQty((prev) => prev - 1)}
                   disabled={qty <= 1}
-                  className="disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-current hover:bg-rose-100 hover:text-rose-500 rounded-md p-1 border-0"
+                  className="disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-current hover:bg-rose-100 hover:text-orange-900 rounded-md p-1 border-0"
                 >
                   <Minus />
                 </button>
                 <p className="font-semibold text-xl">{qty}</p>
                 <button
-                  onClick={() => setQty(prev => prev + 1)}
+                  onClick={() => setQty((prev) => prev + 1)}
+                  disabled={qty >= food.stock}
                   className="hover:bg-green-100 hover:text-green-500 rounded-md p-1 border-0"
                 >
                   <Plus />
                 </button>
               </div>
-              <button
-                type="button"
-                onClick={handleOnAddToCart}
-                disabled={adding}
-                className="mt-8 border rounded py-2 px-6 bg-rose-500 hover:bg-rose-600 border-rose-500 hover:border-rose-600 focus:ring-4 focus:ring-opacity-50 focus:ring-rose-500 text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                Add to cart ({total})
-              </button>
+              <div className="flex flex-col">
+                <button
+                  type="button"
+                  // onClick={handleOnAddToCart}
+                  // disabled={adding}
+                  className="mt-8 border rounded py-2 px-6 bg-orange-900  hover:text-gray-600 hover:bg-gray-100 border-gray-600 hover:border-gray-600 focus:ring-4 focus:ring-opacity-50 focus:ring-gray-500 text-white transition-colors disabled:cursor-not-allowed"
+                >
+                  Add to cart ({total})
+                </button>
+                <div className="w-24 mt-5 border rounded py-2 px-8 bg-orange-900 hover:text-gray-600 hover:bg-gray-100 border-gray-600 hover:border-gray-600 focus:ring-4 focus:ring-opacity-50 focus:ring-gray-500 text-white transition-colors disabled:cursor-not-allowed flex flex-row">
+                  <Link href="/Product">Back</Link>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </>
-  );
+  )
 }
-
-export default Detail;
+export default Detail

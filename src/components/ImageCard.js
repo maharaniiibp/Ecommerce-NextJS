@@ -22,6 +22,7 @@ const ImageCard = ({ image }) => {
               <strong>{image.price}</strong>
             </li>
           </ul>
+          
         </div>
       </div>
     </div>

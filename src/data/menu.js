@@ -11,4 +11,8 @@ export const menu = [
     label: 'Favorite',
     href: '/Product',
   },
+  {
+    label: 'Contact',
+    href: '/Contact',
+  },
 ]
