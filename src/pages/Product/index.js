@@ -127,15 +127,15 @@ function App() {
                     key={image.id}
                     image={image}
                     coba={image.image}
-                    className="bg-stone-200 lg:w-80 rounded-md overflow-hidden transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 ... bg-no-repeat "
+                    className="bg-stone-200 lg:w-60 rounded-md overflow-hidden transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 ... bg-no-repeat "
                   >
                     <img
                       src={image.image}
                       alt=""
-                      className="w-full h-80 md:h-48 object-contain p-2 my-5"
+                      className="w-full h-80 md:h-48 object-contain p-2 my-2"
                     />
-                    <div className="px-6 py-8">
-                      <div className="font-extrabold text-orange-900 text-lg text-justify mb-3">
+                    <div className="px-6 py-2 mb-4 h-48">
+                      <div className="font-extrabold text-orange-900 text-lg text-justify mb-3 -mt-5">
                         {image.name}
                       </div>
                       <div className="text-black">
