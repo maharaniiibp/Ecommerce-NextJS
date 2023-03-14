@@ -15,4 +15,8 @@ export const menu = [
     label: 'Contact',
     href: '/Contact',
   },
+  {
+    label: 'Fetch',
+    href: 'Fetch',
+  },
 ]

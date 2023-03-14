@@ -1,4 +1,3 @@
-import { data } from '../../data/data'
 import React, { useEffect, useState, useRef } from 'react'
 import { useRouter } from 'next/router'
 import { Minus } from '@/components/Minus'
@@ -6,7 +5,25 @@ import { Plus } from '@/components/Plus'
 import Link from 'next/link'
 
 function getFood(id) {
+  const [data, setData] = useState([])
+
+  const url = 'https://api.jsonbin.io/v3/b/640fc5e9ebd26539d08e3227'
+  useEffect(() => {
+    async function getData() {
+      try {
+        const data = await fetch(url)
+        const result = await data.json()
+        console.log(result.record)
+        setData(result.record)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getData()
+  }, [])
+  console.log("id = " + id);
   const item = data.find((e) => e.id === Number(id))
+  console.log("item = " + item);
   if (typeof item === 'object') {
     return item
   }
@@ -15,13 +32,14 @@ function getFood(id) {
 
 function Detail() {
   const router = useRouter()
-  const { slug } = router.query
-
+  const {slug} = router.query;
+  console.log("slug = " + slug)
   const food = getFood(slug)
 
-  if (Object.keys(food).length === 0) {
+  if (Object.keys(food).length === 1) {
     return <div>Item not found</div>
   }
+
   const [qty, setQty] = useState(1)
   const [adding, setAdding] = useState(false)
 

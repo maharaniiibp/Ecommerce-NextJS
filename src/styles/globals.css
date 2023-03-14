@@ -15,6 +15,10 @@ h1, h2, h3 {
   @apply font-Poppins font-Poppins
 }
 
+.bg-loading {
+  background-image:url('/gambar/background.jpg')
+}
+
 .logo{
   @apply font-PermanentMarker font-bold
 }

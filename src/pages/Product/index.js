@@ -1,13 +1,28 @@
 'use client'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import { data } from '../../data/data'
 
 function App() {
+  const [data, setData] = useState([])
+
+  const url = 'https://api.jsonbin.io/v3/b/640fc5e9ebd26539d08e3227'
+  useEffect(() => {
+    async function getData() {
+      try {
+        const data = await fetch(url)
+        const result = await data.json()
+        console.log(result.record)
+        setData(result.record)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getData()
+  }, [])
+
   const [search, setSearch] = useState('')
   const [isLoading] = useState(false)
-  const [q] = useState('')
-  const [searchParam] = useState(['name', 'description', 'category'])
+  // const [searchParam] = useState(['name', 'description', 'category'])
   const [labelCategory] = useState([
     { value: 'All', label: 'All Food' },
     { value: 'Spicy', label: 'Spicy' },
@@ -16,25 +31,6 @@ function App() {
   const [filterParam, setFilterParam] = useState('All')
   const [product, setProduct] = useState(data)
 
-  function cari(data) {
-    isLoading(true)
-    return data.filter((item) => {
-      if (data.category == filterParam) {
-        return searchParam.some((newItem) => {
-          return (
-            item[newItem].toString().toLowerCase().indexOf(q.toLowerCase()) > -1
-          )
-        })
-      } else if (filterParam == 'All') {
-        return searchParam.some((newItem) => {
-          return (
-            item[newItem].toString().toLowerCase().indexOf(q.toLowerCase()) > -1
-          )
-        })
-      }
-      isLoading(false)
-    })
-  }
 
   useEffect(() => {
     setProduct(data)
@@ -43,11 +39,11 @@ function App() {
   useEffect(() => {
     console.log(filterParam)
     const searchTerm = search.toLowerCase()
-    const filteredData = data.filter((item) =>
+    const filteredData = data.filter((  item) =>
       item.name.toLowerCase().includes(searchTerm)
     )
     setProduct(filteredData)
-  }, [filterParam, search])
+  }, [filterParam, search, data])
 
   console.log(filterParam)
 
@@ -71,6 +67,8 @@ function App() {
           Mamam duluuu ok!
         </h1>
       </div>
+      
+
       <div className="flex max-w-lg rounded overflow-hidden my-4 mx-auto mt-0 space-x-4">
         <form className="w-full max-w-sm bg-white/60 p-1">
           <div className="flex items-center border-b-2 border-orange-900 py-2">
@@ -97,19 +95,33 @@ function App() {
           <span className="focus"></span>
         </div>
       </div>
-      <div className="text-center text-orange-900 text-lg mb-8">
-        <p>{product.length} Food found</p>
-      </div>
-      {isLoading && (
-        <h1 className="text-5xl text-center mx-auto mt-32">Loading ...</h1>
-      )}
       {!isLoading && data.length === 0 && (
-        <h1 className="text-5xl text-center mx-auto mt-32">Images Not Found</h1>
+        <div class="flex items-center justify-center mt-20">
+        <div class="relative">
+          <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
+          <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-pink-500 to-purple-500 rounded-full animate-pulse"></div>
+          <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full shadow-lg"></div>
+          <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-pink-500 to-purple-500 rounded-full shadow-xl"></div>
+          <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full shadow-2xl"></div>
+          <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-pink-500 to-purple-500 rounded-full"></div>
+          <div class="absolute top-0 left-0 w-full h-full flex justify-center items-center text-white">
+            <div class="p-8">
+              <svg class="animate-spin -ml-1 mr-3 h-16 w-16 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647zm12 0l3 2.647A7.962 7.962 0 0120 12h-4zm-8-10v-4H8v4H4v2h4v4h2v-4h4v-2h-4z"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+      
+      
       )}
       {data.length !== 0 && (
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          {product
-            ? product.map((image) => (
+          { product.map((image) => (
                 <div>
                   <div
                     key={image.id}
@@ -143,35 +155,7 @@ function App() {
                   </div>
                 </div>
               ))
-            : data.map((image) => (
-                <Link href={`/${image.id}`} key={image.id}>
-                  <div
-                    key={image.id}
-                    image={image}
-                    coba={image.image}
-                    className="bg-stone-200 lg:w-80 rounded-md overflow-hidden transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300 ... bg-no-repeat "
-                  >
-                    <img
-                      src={image.image}
-                      alt=""
-                      className="w-full h-80 md:h-48 object-contain p-2 my-5"
-                    />
-                    <div className="px-6 py-8">
-                      <div className="font-extrabold text-orange-900 text-lg text-justify mb-3">
-                        {image.name}
-                      </div>
-                      <div className="text-black">
-                        <ul>
-                          <li>{image.description}</li>
-                          <li className="text-md m">
-                            <strong>{image.price}</strong>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              ))}
+            }
         </div>
       )}
     </div>
